@@ -7,7 +7,7 @@ import sys
 from typing import Tuple, Dict
 
 
-class SSDPServer(asyncio.DatagramProtocol):
+class SSDPServerProtocol(asyncio.DatagramProtocol):
     address = '239.255.255.250'
     port = 1900
     transport: asyncio.DatagramTransport = None
@@ -69,7 +69,7 @@ class ResponseSender(asyncio.DatagramProtocol):
     @staticmethod
     def get_response(local_addr: str) -> bytes:
         now = datetime.datetime.utcnow()
-        port = 8008
+        port = 8888
         name = "SelfCast"
         version = '0.0.1'
         config = 1
